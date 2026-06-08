@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,17 +8,22 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function Login() {
   const navigate = useNavigate();
+  const [activeRole, setActiveRole] = useState('student');
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/student/dashboard');
+    navigate(`/${activeRole}/dashboard`);
   };
 
   return (
-    <AuroraBackground className="min-h-screen flex items-center justify-center p-4">
+    <AuroraBackground className="min-h-screen flex items-center justify-center p-4 relative">
+      <div className="absolute top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -42,7 +47,7 @@ export default function Login() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="student" className="w-full">
+            <Tabs defaultValue="student" onValueChange={setActiveRole} className="w-full">
               <TabsList className="grid w-full grid-cols-4 mb-6">
                 <TabsTrigger value="student">Student</TabsTrigger>
                 <TabsTrigger value="faculty">Faculty</TabsTrigger>

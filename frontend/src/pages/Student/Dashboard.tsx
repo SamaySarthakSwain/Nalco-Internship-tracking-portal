@@ -12,6 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 // Mock Data
 const initialProgressData = [
@@ -104,7 +105,7 @@ export default function StudentDashboard() {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'applications' | 'logs' | 'attendance' | 'settings'>('dashboard');
   
   // Dashboard states
-  const [applications, setApplications] = useState(initialApplications);
+  const [applications] = useState(initialApplications);
   const [selectedAppIdx, setSelectedAppIdx] = useState(0);
   
   const [logs, setLogs] = useState(initialLogs);
@@ -302,6 +303,7 @@ export default function StudentDashboard() {
             <p className="text-muted-foreground mt-1">Logged in as {profile.name} ({profile.roll})</p>
           </div>
           <div className="flex items-center space-x-4">
+            <ThemeToggle />
             <Button variant="outline" size="icon" className="rounded-full relative hover:bg-secondary">
               <Bell className="h-5 w-5" />
               <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>

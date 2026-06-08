@@ -2,10 +2,40 @@ import { AuroraBackground } from '@/components/ui/aurora-background';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { UserPlus, Sparkles, Clock, Award } from 'lucide-react';
+
+import { ThemeToggle } from '@/components/ThemeToggle';
+
+const steps = [
+  {
+    number: "01",
+    title: "Register & Setup Profile",
+    desc: "Create your student account, input academic branch details, and specify your target internship hours.",
+    icon: UserPlus
+  },
+  {
+    number: "02",
+    title: "AI ATS Optimization",
+    desc: "Upload your resume to get instant ATS scores, identify key skill gaps, and receive tailored preparation roadmaps.",
+    icon: Sparkles
+  },
+  {
+    number: "03",
+    title: "Log Daily Performance",
+    desc: "Punch in your attendance, record hours logged, and log specific daily tasks and problem-solving actions.",
+    icon: Clock
+  },
+  {
+    number: "04",
+    title: "Get Certified",
+    desc: "College mentors review your task completion charts and verify total accumulated hours to award final certification.",
+    icon: Award
+  }
+];
 
 export default function LandingPage() {
   return (
-    <AuroraBackground className="min-h-screen text-foreground font-sans relative overflow-hidden flex flex-col">
+    <AuroraBackground className="min-h-screen text-foreground font-sans relative overflow-x-hidden flex flex-col">
       <nav className="w-full px-6 py-4 fixed top-0 z-50 bg-background/50 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
@@ -16,9 +46,10 @@ export default function LandingPage() {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors text-sm">Features</a>
-            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors text-sm">About</a>
+            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors text-sm">How It Works</a>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
             <Link to="/login">
               <Button variant="ghost">Login</Button>
             </Link>
@@ -29,76 +60,157 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      <main className="flex-1 flex flex-col items-center justify-center px-6 mt-20 relative z-10 text-center">
-        <motion.div 
-          className="max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
+      <main className="flex-1 w-full relative z-10 mt-20">
+        {/* Hero Section */}
+        <section id="features" className="min-h-[85vh] flex flex-col items-center justify-center px-6 text-center py-12">
           <motion.div 
-            className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mb-6"
-            whileHover={{ scale: 1.05 }}
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            ✨ AI-Powered Internship Tracking
-          </motion.div>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-            Manage Internships with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Intelligent Automation</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            A centralized, AI-driven platform for students, faculty, and placement officers to seamlessly track, manage, and analyze internship lifecycles.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/register">
-              <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-base shadow-lg shadow-primary/20 transition-transform hover:scale-105">
-                Start Tracking Now
-              </Button>
-            </Link>
-            <Link to="/login">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 text-base bg-background/50 backdrop-blur-sm transition-transform hover:scale-105">
-                Access Dashboard
-              </Button>
-            </Link>
-          </div>
-        </motion.div>
-        
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full text-left">
-          {[
-            {
-              title: "Student Portal",
-              desc: "Track applications, daily logs, and AI-driven skill gap analysis.",
-              icon: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>,
-              color: "bg-primary/10 text-primary"
-            },
-            {
-              title: "Faculty Mentorship",
-              desc: "Monitor progress, approve internships, and review daily attendance.",
-              icon: <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></>,
-              color: "bg-blue-500/10 text-blue-500"
-            },
-            {
-              title: "Placement Analytics",
-              desc: "Real-time statistics, company management, and dynamic reports.",
-              icon: <><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></>,
-              color: "bg-purple-500/10 text-purple-500"
-            }
-          ].map((feature, i) => (
             <motion.div 
-              key={i}
-              className="bg-background/60 backdrop-blur-lg border p-6 rounded-2xl hover:shadow-xl hover:border-primary/50 transition-colors duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 + (i * 0.2), ease: "easeOut" }}
-              whileHover={{ y: -5 }}
+              className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mb-6"
+              whileHover={{ scale: 1.05 }}
             >
-              <div className={`w-12 h-12 ${feature.color} rounded-lg flex items-center justify-center mb-4`}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{feature.icon}</svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.desc}</p>
+              ✨ AI-Powered Internship Tracking
             </motion.div>
-          ))}
-        </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+              Manage Internships with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Intelligent Automation</span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+              A centralized, AI-driven platform for students, faculty, and placement officers to seamlessly track, manage, and analyze internship lifecycles.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/register">
+                <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-base shadow-lg shadow-primary/20 transition-transform hover:scale-105">
+                  Start Tracking Now
+                </Button>
+              </Link>
+              <Link to="/login">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 text-base bg-background/50 backdrop-blur-sm transition-transform hover:scale-105">
+                  Access Dashboard
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+          
+          <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full text-left">
+            {[
+              {
+                title: "Student Portal",
+                desc: "Track applications, daily logs, and AI-driven skill gap analysis.",
+                icon: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>,
+                color: "bg-primary/10 text-primary"
+              },
+              {
+                title: "Faculty Mentorship",
+                desc: "Monitor progress, approve internships, and review daily attendance.",
+                icon: <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></>,
+                color: "bg-blue-500/10 text-blue-500"
+              },
+              {
+                title: "Placement Analytics",
+                desc: "Real-time statistics, company management, and dynamic reports.",
+                icon: <><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></>,
+                color: "bg-purple-500/10 text-purple-500"
+              }
+            ].map((feature, i) => (
+              <motion.div 
+                key={i}
+                className="bg-background/60 backdrop-blur-lg border p-6 rounded-2xl hover:shadow-xl hover:border-primary/50 transition-colors duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 + (i * 0.2), ease: "easeOut" }}
+                whileHover={{ y: -5 }}
+              >
+                <div className={`w-12 h-12 ${feature.color} rounded-lg flex items-center justify-center mb-4`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{feature.icon}</svg>
+                </div>
+                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Timeline Section */}
+        <section id="how-it-works" className="py-24 max-w-5xl mx-auto w-full px-6 text-left relative">
+          <div className="text-center mb-20">
+            <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-orange-500 uppercase">Behind the Scenes</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold mt-2 tracking-tight text-white">
+              How We Create <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">Magic</span>
+            </h2>
+            <p className="text-muted-foreground mt-3 text-sm md:text-base">
+              Watch our process unfold step by step
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Vertical Timeline Line */}
+            <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-zinc-800" />
+            
+            {/* Start Badge */}
+            <div className="absolute left-6 md:left-1/2 -translate-x-1/2 -top-10 flex items-center space-x-2">
+              <span className="w-3.5 h-3.5 rounded-full bg-orange-500 ring-4 ring-orange-500/20" />
+              <span className="text-[10px] font-bold tracking-wider text-orange-500 uppercase translate-x-2">Start</span>
+            </div>
+
+            <div className="space-y-16 md:space-y-24 relative">
+              {steps.map((step, idx) => {
+                const isEven = idx % 2 === 1;
+                return (
+                  <div key={idx} className={`flex flex-col md:flex-row items-center relative ${isEven ? 'md:flex-row-reverse' : ''}`}>
+                    {/* Card Column */}
+                    <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-8">
+                      <motion.div 
+                        className={`p-6 rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur-md hover:border-orange-500/30 transition-all duration-300 ${
+                          isEven ? 'text-left md:text-left' : 'text-left md:text-right'
+                        }`}
+                        initial={{ opacity: 0, x: isEven ? 30 : -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        whileHover={{ y: -4 }}
+                      >
+                        {/* Badge (Number + Icon) */}
+                        <div className={`flex items-center space-x-2 mb-4 ${isEven ? 'justify-start' : 'justify-start md:justify-end'}`}>
+                          {isEven ? (
+                            <>
+                              <span className="text-3xl font-extrabold text-orange-500/20">{step.number}</span>
+                              <div className="p-1.5 rounded-lg border border-orange-500/20 bg-orange-500/5 text-orange-500">
+                                <step.icon className="h-5 w-5" />
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div className="p-1.5 rounded-lg border border-orange-500/20 bg-orange-500/5 text-orange-500">
+                                <step.icon className="h-5 w-5" />
+                              </div>
+                              <span className="text-3xl font-extrabold text-orange-500/20">{step.number}</span>
+                            </>
+                          )}
+                        </div>
+
+                        {/* Content */}
+                        <h3 className="text-xl font-bold mb-2 text-foreground">{step.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+                      </motion.div>
+                    </div>
+
+                    {/* Spacer for Center Alignment */}
+                    <div className="hidden md:block w-1/2" />
+
+                    {/* Dot on Timeline */}
+                    <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-[28px] md:top-1/2 md:-translate-y-1/2 flex items-center justify-center">
+                      <span className="w-2.5 h-2.5 rounded-full bg-orange-500 ring-4 ring-orange-500/20" />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
       </main>
     </AuroraBackground>
   );

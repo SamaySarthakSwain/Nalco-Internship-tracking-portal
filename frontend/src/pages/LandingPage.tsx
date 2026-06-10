@@ -66,7 +66,7 @@ export default function LandingPage() {
             AI-Powered Internship Tracking
           </motion.div>
           
-          <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+          <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
             Manage Internships with <br className="hidden md:block"/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Intelligent Automation</span>
           </motion.h1>
@@ -98,7 +98,7 @@ export default function LandingPage() {
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Powerful Features</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight px-2">Powerful Features</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Everything you need to streamline the internship process.</p>
           </motion.div>
 
@@ -154,7 +154,7 @@ export default function LandingPage() {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeInUp}
             >
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">How it Works</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight px-2">How it Works</h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Get started in three simple steps.</p>
             </motion.div>
 
@@ -219,7 +219,7 @@ export default function LandingPage() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold mb-8">Ready to simplify your workflow?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 px-4">Ready to simplify your workflow?</h2>
           <Link to="/register">
             <Button size="lg" className="h-14 px-10 text-lg shadow-lg hover:scale-105 transition-transform rounded-xl">
               Create an Account

@@ -133,13 +133,13 @@ export default function Login() {
             </CardHeader>
             <CardContent>
               {/* Role Selector Pills */}
-              <div className="flex p-1 bg-muted/50 rounded-xl mb-8 space-x-1">
+              <div className="flex flex-wrap p-1 bg-muted/50 rounded-xl mb-8 gap-1">
                 {(['student', 'faculty', 'tpo', 'admin'] as Role[]).map((r) => (
                   <button
                     key={r}
                     onClick={() => setRole(r)}
                     className={cn(
-                      "flex-1 py-2 text-sm font-medium rounded-lg transition-all duration-200 capitalize",
+                      "flex-auto min-w-[70px] py-2 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 capitalize",
                       role === r 
                         ? "bg-background shadow-sm text-foreground" 
                         : "text-muted-foreground hover:text-foreground hover:bg-muted"

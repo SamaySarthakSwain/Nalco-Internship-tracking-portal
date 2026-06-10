@@ -100,7 +100,7 @@ export default function StudentDashboard() {
       {/* Main Content */}
       <main className="flex-1 p-6 md:p-8 overflow-y-auto w-full">
         {/* Top Header */}
-        <header className="flex justify-between items-center mb-8 border-b border-border/50 pb-6">
+        <header className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center mb-8 border-b border-border/50 pb-6">
           <div>
             <h1 className="text-3xl font-bold tracking-tight capitalize">{activeTab === 'discover' ? 'Internship Marketplace' : activeTab.replace('-', ' ')}</h1>
             <p className="text-muted-foreground mt-1">Welcome back, {profile.name}</p>

@@ -67,7 +67,7 @@ export default function LandingPage() {
             className="max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8 }}
           >
             <motion.div 
               className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mb-6"
@@ -121,7 +121,7 @@ export default function LandingPage() {
                 className="bg-background/60 backdrop-blur-lg border p-6 rounded-2xl hover:shadow-xl hover:border-primary/50 transition-colors duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 + (i * 0.2), ease: "easeOut" }}
+                transition={{ duration: 0.6, delay: 0.2 + (i * 0.2) }}
                 whileHover={{ y: -5 }}
               >
                 <div className={`w-12 h-12 ${feature.color} rounded-lg flex items-center justify-center mb-4`}>
@@ -170,7 +170,7 @@ export default function LandingPage() {
                         initial={{ opacity: 0, x: isEven ? 30 : -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        transition={{ duration: 0.5 }}
                         whileHover={{ y: -4 }}
                       >
                         {/* Badge (Number + Icon) */}

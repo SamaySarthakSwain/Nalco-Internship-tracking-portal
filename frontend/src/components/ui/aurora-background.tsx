@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-export const AuroraBackground: React.FC<{ children?: React.ReactNode, className?: string }> = ({ children, className }) => {
+const AuroraBackground: React.FC<{ className?: string }> = ({ className }) => {
     const mountRef = useRef<HTMLDivElement>(null);
+    
     useEffect(() => {
         if (!mountRef.current) return;
         const currentMount = mountRef.current;
@@ -10,10 +11,10 @@ export const AuroraBackground: React.FC<{ children?: React.ReactNode, className?
         const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
         const renderer = new THREE.WebGLRenderer({ alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.domElement.style.position = 'fixed';
+        renderer.domElement.style.position = 'absolute';
         renderer.domElement.style.top = '0';
         renderer.domElement.style.left = '0';
-        renderer.domElement.style.zIndex = '-1';
+        renderer.domElement.style.zIndex = '0';
         renderer.domElement.style.display = 'block';
         currentMount.appendChild(renderer.domElement);
         const material = new THREE.ShaderMaterial({
@@ -41,10 +42,7 @@ export const AuroraBackground: React.FC<{ children?: React.ReactNode, className?
         animate();
         return () => { cancelAnimationFrame(animationFrameId); window.removeEventListener('resize', handleResize); if (currentMount.contains(renderer.domElement)) currentMount.removeChild(renderer.domElement); renderer.dispose(); material.dispose(); geometry.dispose(); };
     }, []);
-    return (
-      <div className={className}>
-        <div ref={mountRef} />
-        {children}
-      </div>
-    );
+    return <div ref={mountRef} className={className} />;
 };
+
+export { AuroraBackground };

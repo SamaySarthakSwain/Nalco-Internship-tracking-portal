@@ -36,7 +36,7 @@ const activeInternship = {
   status: "In Progress",
   reportingTime: "09:00 AM",
   reportingLocation: "Nalco Bhavan, Bhubaneswar",
-  mentor: "Dr. Sarah Jenkins",
+  mentor: "Dr. Naren",
   progress: 65,
   tasks: [
     { title: "Complete Safety Induction", done: true },
@@ -47,7 +47,7 @@ const activeInternship = {
 };
 
 const profile = {
-  name: "Alex Johnson",
+  name: "Samay",
   roll: "CS2026098",
   branch: "Computer Science & Engineering",
 };

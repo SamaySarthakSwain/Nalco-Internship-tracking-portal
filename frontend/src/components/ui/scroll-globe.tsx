@@ -177,10 +177,12 @@ function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, className }: 
       </div>
 
       <div
-        className="fixed z-10 pointer-events-none will-change-transform transition-all duration-[1400ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
+        className="fixed z-10 pointer-events-none will-change-transform transition-all"
         style={{
           transform: globeTransform,
           filter: `opacity(${activeSection === 3 ? 0.4 : 0.85})`,
+          transitionDuration: '1400ms',
+          transitionTimingFunction: 'cubic-bezier(0.23,1,0.32,1)'
         }}
       >
         <div className="scale-75 sm:scale-90 lg:scale-100">

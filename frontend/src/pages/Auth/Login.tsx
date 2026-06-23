@@ -9,7 +9,7 @@ import { CheckCircle2, User, Key, LayoutDashboard, Apple, Smartphone } from 'luc
 import { ModeToggle } from '@/components/mode-toggle';
 import { cn } from '@/lib/utils';
 
-type Role = 'student' | 'faculty' | 'tpo' | 'admin';
+type Role = 'student' | 'faculty' | 'admin';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -27,7 +27,6 @@ export default function Login() {
   const roleDetails = {
     student: { title: "Student Login", placeholder: "student@college.edu" },
     faculty: { title: "Faculty Login", placeholder: "faculty@college.edu" },
-    tpo: { title: "TPO Login", placeholder: "tpo@college.edu" },
     admin: { title: "Admin Login", placeholder: "admin@nalco.com" }
   };
 
@@ -134,7 +133,7 @@ export default function Login() {
             <CardContent>
               {/* Role Selector Pills */}
               <div className="flex flex-wrap p-1 bg-muted/50 rounded-xl mb-8 gap-1">
-                {(['student', 'faculty', 'tpo', 'admin'] as Role[]).map((r) => (
+                {(['student', 'faculty', 'admin'] as Role[]).map((r) => (
                   <button
                     key={r}
                     onClick={() => setRole(r)}
